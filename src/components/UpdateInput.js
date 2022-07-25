@@ -14,8 +14,6 @@ const UpdateInput = (props) => {
     // object destructuring of props
     const { taskList, setTaskList, selectedTask, setSelectedTask } = props;
 
-    let tempTaskList = taskList;
-
     // useState to store update item
     const [updateText, setUpdateText] = useState('');
 
@@ -30,7 +28,8 @@ const UpdateInput = (props) => {
         // Trim all white space from both side
         const trimUpdateText = updateText.trim();
         if ((selectedTask !== null) && (trimUpdateText !== "")) {
-            tempTaskList[selectedTask.taskId] = updateText;
+            let tempTaskList = taskList;
+            tempTaskList[selectedTask.taskId] = trimUpdateText;
             setTaskList(tempTaskList);
             setSelectedTask({
                 task: '',
